@@ -62,17 +62,59 @@ function contarRango(n1,n2){
 
 //ej6
 let n = Number
-
 function likes(n){
     let ns = `${n}`
+    let digits = String
     switch (true){
         case (n < 1000):
-            return n;
-        case (n > 1000 && n > 10000):
-            let digits = ns.substring(0 , ns.length - 3)
-            return n
+            return ns;
+        case (n > 1000 && n < 1000000):
+            digits = ns.substring(0 , ns.length - 3);
+            return (digits+"K");
+        case (n > 1000000):
+            digits = ns.substring(0 , ns.length - 6);
+            return (digits+"M");
     }
 }
+
+//ej7
+function sumarRango(n1,n2){
+    let sum = 0
+    let aux = Number
+    if (n1 === n2){
+        return sum;
+    }
+    else{
+        for (n1,n2; n1<=n2; n1++){
+            sum += n1;
+        }
+        return sum;
+    }
+}
+
+//ej8
+let st = String;
+let ch = String;
+function numeroDeAes(st){
+    let counter = 0
+    for(let i = 0; i < st.length; i++)
+        if (st[i] === "a"){
+            counter += 1;
+        }
+    return counter;
+}
+function numeroDeCaracteres(st,ch){
+    let counter = 0
+    for(let i = 0; i < st.length; i++)
+        if (st[i] === ch){
+            counter += 1;
+        }
+    return counter;
+}
+
+//10
+
+
 let op = parseInt(prompt('Seleccione que ejercicio quiere ver (1-17) o 0 para salir'))
 
 switch(op){
@@ -103,9 +145,25 @@ switch(op){
         console.log(contarRango(5, 6)) // 0
         break;
     case 6:
-        console.log(likes(1900)) // "1K"
+        console.log(likes(983)); // "983"
+        console.log(likes(1900)); // "1K"
+        console.log(likes(54000)); // "54K"
+        console.log(likes(120800)); // "120K"
+        console.log(likes(25222444)); // "25M"
         break;
-
+    case 7:
+        console.log(sumarRango(0, 10)); // 55
+        console.log(sumarRango(12, 14)); // 39
+        console.log(sumarRango(5, 5)); // 0
+        break;
+    case 8:
+        console.log(numeroDeAes("abracadabra")); // 5
+        console.log(numeroDeAes("etinol")); // 0
+        console.log(numeroDeAes("")); // 0
+        console.log(numeroDeCaracteres("Hola Mundo", "o")); // 2
+        console.log(numeroDeCaracteres("MMMMM", "m")); // 0
+        console.log(numeroDeCaracteres("eeee", "e")); // 4
+        break;
 }
 
 
